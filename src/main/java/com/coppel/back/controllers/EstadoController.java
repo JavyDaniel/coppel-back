@@ -1,7 +1,6 @@
 package com.coppel.back.controllers;
 
 import com.coppel.back.dto.EstadoDTO;
-import com.coppel.back.dto.PaisDTO;
 import com.coppel.back.services.EstadoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 
 @RestController
 @RequestMapping(value = "/estados")
