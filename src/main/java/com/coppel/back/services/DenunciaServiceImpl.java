@@ -34,7 +34,17 @@ public class DenunciaServiceImpl implements DenunciaService {
         Empresa empresa = empresaRepository.findById(empresaId).orElseThrow(() -> new RuntimeException("Not found"));
         Estado estado = estadoRepository.findById(estadoId).orElseThrow(() -> new RuntimeException("Not found"));
 
+        Denuncia denunciaMax = denunciaRepository.findFirstByOrderByFolioDesc();
+
         Denuncia denuncia = MHelpers.modelMapper().map(denunciaDTO, Denuncia.class);
+        if(denunciaMax == null)
+        {
+           denuncia.setFolio(50000L);
+        }else {
+            denuncia.setFolio(denunciaMax.getFolio() + 1);
+        }
+
+
         denuncia.setEmpresa(empresa);
         denuncia.setEstado(estado);
         denuncia.setEstatus(Estatus.NUEVA);

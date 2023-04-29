@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -17,6 +18,7 @@ import java.util.Date;
 public class DenunciaDTO {
 
     private Integer id;
+    private String folio;
     @NotNull
     private Integer centro;
     @NotEmpty
@@ -29,4 +31,5 @@ public class DenunciaDTO {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date fecha;
     private Estatus estatus;
+    private List<ComentarioDTO> comentarios;
 }

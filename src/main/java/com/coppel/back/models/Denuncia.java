@@ -1,13 +1,17 @@
 package com.coppel.back.models;
 
 import com.coppel.back.enums.Estatus;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -36,5 +40,11 @@ public class Denuncia {
     @Enumerated(EnumType.STRING)
     @Column(name = "estatus", nullable = false)
     private Estatus estatus;
+    @Column(name = "folio", nullable = false)
+    private Long folio;
+    @JsonBackReference
+    @OneToMany(mappedBy = "denuncia", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comentario> comentarios = new ArrayList<>();
+
 
 }
